@@ -21,7 +21,7 @@ for (var y = 0; y < 8; y++) {
   var row = document.createElement("div");
   row.classList.add("row");
 
-  if (y % 2 != 0) {
+  if (y % 2 === 0) {
     row.style.flexDirection = 'row-reverse';
   }
 
@@ -38,22 +38,4 @@ for (var y = 0; y < 8; y++) {
   }
 
   game.appendChild(row);
-} // for (let index = 0; index < 64 ; index++) {
-//     if (index%2!=0) {
-//       whiteBox()
-//     }
-//     else {
-//       blackBox()
-//     }
-//   }
-// for (let index = 0; index < 64 ; index++) {
-//   if (index%2!=0) {
-//     whiteBox()
-//   }
-//   else {
-//     blackBox()
-//   }
-//   if (index%8===0){
-//     whiteBox();
-//   }
-// }
+}

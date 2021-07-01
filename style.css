@@ -4,18 +4,27 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #game {
-  width: 800px;
+  width: 480px;
+  height: 500px;
+  padding: 5px;
+  border: 5px solid blue;
 }
 #game .row {
   display: flex;
 }
 #game .white {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 }
 #game .black {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   background-color: black;
 }
