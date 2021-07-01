@@ -1,13 +1,12 @@
 "use strict";
 
-var game = document.getElementById('game');
-
-var divRow = function divRow() {
-  var divR = document.createElement("div");
-  game.appendChild(divR);
-  divR.classList.add("row");
-  divR.style.flexDirection = i % 2 === 0 ? '' : 'row-reverse';
-}; // const whiteBox = () => {
+var game = document.getElementById('game'); // const divRow = () => {
+//   const divR = document.createElement("div");
+//   game.appendChild(divR);
+//   divR.classList.add("row");
+//   divR.style.flexDirection = i%2===0 ? '':'row-reverse';
+// }
+// const whiteBox = () => {
 //   const whiteBox = document.createElement("div");
 //   whiteBox.classList.add("white");
 //   row.appendChild(whiteBox);
@@ -17,7 +16,6 @@ var divRow = function divRow() {
 //   blackBox.classList.add("black");
 //   row.appendChild(blackBox);
 // }
-
 
 for (var y = 0; y < 8; y++) {
   var row = document.createElement("div");

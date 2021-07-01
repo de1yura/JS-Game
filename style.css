@@ -5,6 +5,9 @@
 }
 
 #game {
+  width: 800px;
+}
+#game .row {
   display: flex;
 }
 #game .white {

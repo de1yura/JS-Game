@@ -1,12 +1,11 @@
 const game = document.getElementById('game');
 
-const divRow = () => {
-  const divR = document.createElement("div");
-  game.appendChild(divR);
-  divR.classList.add("row");
-  divR.style.flexDirection = i%2===0 ? '':'row-reverse';
-}
-
+// const divRow = () => {
+//   const divR = document.createElement("div");
+//   game.appendChild(divR);
+//   divR.classList.add("row");
+//   divR.style.flexDirection = i%2===0 ? '':'row-reverse';
+// }
 
 // const whiteBox = () => {
 //   const whiteBox = document.createElement("div");
@@ -36,7 +35,6 @@ for(let y=0; y<8; y++){
       whiteBox.classList.add("white");
       row.appendChild(whiteBox);
     }
-    
   }
   game.appendChild(row);
 }
