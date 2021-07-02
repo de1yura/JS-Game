@@ -18,6 +18,24 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
   border: solid 5px red;
 }
+.chess .letters {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  grid-row: 3;
+}
+.chess .numbers {
+  grid-column: 1;
+  grid-row: 1/4;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  align-content: center;
+  padding: 20px 0 20px 5px;
+}
+.chess li {
+  list-style: none;
+}
 
 #game {
   width: 480px;
