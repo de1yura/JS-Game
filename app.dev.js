@@ -3,7 +3,7 @@
 var game = document.getElementById('game');
 var board = document.querySelector('.chess');
 var letters = document.querySelector('.letters');
-var numbers = document.querySelector('.numbers'); //creating div elements inside html for the chess board patter
+var numbers = document.querySelector('.numbers'); //creating div elements inside html for the chess board pattern
 
 for (var y = 0; y < 8; y++) {
   var row = document.createElement("div");
@@ -17,10 +17,12 @@ for (var y = 0; y < 8; y++) {
     if (x % 2 === 0) {
       var blackBox = document.createElement("div");
       blackBox.classList.add("black");
+      blackBox.classList.add("box");
       row.appendChild(blackBox);
     } else {
       var whiteBox = document.createElement("div");
       whiteBox.classList.add("white");
+      whiteBox.classList.add("box");
       row.appendChild(whiteBox);
     }
   }
@@ -40,7 +42,22 @@ number.forEach(function (sideNum) {
   var sideNumbers = document.createElement("li");
   sideNumbers.textContent = sideNum;
   numbers.appendChild(sideNumbers);
-}); //Old Code:
+}); //adding id to each box
+
+var boxValues = [];
+
+for (i = 1; i <= 8; i++) {
+  alphaNum = alphabet.map(function (alpha) {
+    return alpha + i;
+  });
+  boxValues.push(alphaNum);
+} //console.log(boxValues);
+
+
+boxValues.map(function (boxValue) {
+  array = boxValue;
+});
+console.log(array); //Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);

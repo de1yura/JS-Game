@@ -3,8 +3,7 @@ const board = document.querySelector('.chess');
 const letters = document.querySelector('.letters');
 const numbers = document.querySelector('.numbers');
 
-//creating div elements inside html for the chess board patter
-
+//creating div elements inside html for the chess board pattern
 for(let y=0; y<8; y++){
   const row = document.createElement("div");
   row.classList.add("row");
@@ -15,16 +14,19 @@ for(let y=0; y<8; y++){
     if (x%2===0) {
     const blackBox = document.createElement("div");
     blackBox.classList.add("black");
+    blackBox.classList.add("box");
     row.appendChild(blackBox);
     }
     else{
       const whiteBox = document.createElement("div");
       whiteBox.classList.add("white");
+      whiteBox.classList.add("box");
       row.appendChild(whiteBox);
     }
   }
   game.appendChild(row);
 }
+
 
 //array of numbers and letters for the board
 let alphabet = ['a','b','c','d','e','f','g','h'];
@@ -40,8 +42,23 @@ number.forEach((sideNum) => {
   let sideNumbers = document.createElement("li");
   sideNumbers.textContent=sideNum;
   numbers.appendChild(sideNumbers);
-
 })
+
+//adding id to each box
+
+let boxValues=[];
+for(i=1; i<=8; i++){
+alphaNum = alphabet.map((alpha) => alpha+i);
+boxValues.push(alphaNum);
+}
+//console.log(boxValues);
+
+boxValues.map((boxValue)=> {
+  array = boxValue;
+})
+
+console.log(array);
+
 
 
 
