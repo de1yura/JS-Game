@@ -1,3 +1,6 @@
+//import { piecesImg } from "./pieces"
+//import { piecesPos } from "./pieces";
+
 const game = document.getElementById('game');
 const board = document.querySelector('.chess');
 const letters = document.querySelector('.letters');
@@ -95,11 +98,65 @@ for(i=0;i<8;i++){
 }
 
 //importing the pieces into the board
+const piecesImg = {
+  'w_pawn' : "./images/Chess_plt60.png",
+  'w_rook' : "./images/Chess_rlt60.png",
+  'w_knight' : "./images/Chess_nlt60.png",
+  'w_bishop' : "./images/Chess_blt60.png",
+  'w_queen' : "./images/Chess_qlt60.png",
+  'w_king' : "./images/Chess_klt60.png",
+
+  'b_pawn' : "./images/Chess_pdt60.png",
+  'b_rook' : "./images/Chess_rdt60.png",
+  'b_knight' : "./images/Chess_ndt60.png",
+  'b_bishop' : "./images/Chess_bdt60.png",
+  'b_queen' : "./images/Chess_qdt60.png",
+  'b_king' : "./images/Chess_kdt60.png"
+}
+
+const piecesPos = {
+  'a2': 'w_pawn',
+  'b2': 'w_pawn',
+  'c2': 'w_pawn',
+  'd2': 'w_pawn',
+  'e2': 'w_pawn',
+  'f2': 'w_pawn',
+  'g2': 'w_pawn',
+  'h2': 'w_pawn',
+  'a1':'w_rook',  
+  'b1':'w_knight', 
+  'c1':'w_bishop', 
+  'd1':'w_queen',
+  'e1':'w_king', 
+  'f1':'w_bishop',
+  'g1':'w_knight', 
+  'h1':'w_rook', 
+
+  'a7': 'b_pawn',
+  'b7': 'b_pawn',
+  'c7': 'b_pawn',
+  'd7': 'b_pawn',
+  'e7': 'b_pawn',
+  'f7': 'b_pawn',
+  'g7': 'b_pawn',
+  'h7': 'b_pawn',
+  'a8':'b_rook',  
+  'b8':'b_knight', 
+  'c8':'b_bishop', 
+  'd8':'b_queen',
+  'e8':'b_king', 
+  'f8':'b_bishop',
+  'g8':'b_knight', 
+  'h8':'b_rook'
+}
 
 const white_pawn = document.createElement("img");
 white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-document.getElementById('a1').appendChild(white_pawn);
+document.getElementById('a2').appendChild(white_pawn);
 
+
+const pieceTypes_duplicates= Object.values(piecesPos);
+const pieceTypes = pieceTypes_duplicates.filter((pieces, index) => pieceTypes_duplicates.indexOf(pieces) ===index);
 
 
 
