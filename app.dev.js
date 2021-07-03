@@ -119,7 +119,7 @@ var piecesImg = {
   'b_queen': "./images/Chess_qdt60.png",
   'b_king': "./images/Chess_kdt60.png"
 };
-var piecesPos = {
+var piecesStartPos = {
   'a2': 'w_pawn',
   'b2': 'w_pawn',
   'c2': 'w_pawn',
@@ -152,22 +152,15 @@ var piecesPos = {
   'f8': 'b_bishop',
   'g8': 'b_knight',
   'h8': 'b_rook'
-}; // const white_pawn = document.createElement("img");
-// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-// document.getElementById('a2').appendChild(white_pawn);
-
-var piecesTypes = Object.keys(piecesImg);
-var piecesImages = Object.values(piecesImg);
-var piecesPosition = Object.keys(piecesPos);
-var piecesInPosition = Object.values(piecesPos);
+};
+var piecesPosition = Object.keys(piecesStartPos);
+var piecesInPosition = Object.values(piecesStartPos);
 
 for (i = 0; i < piecesPosition.length; i++) {
   var imgPiece = document.createElement('img');
-
-  if (piecesInPosition[i] === 'w_pawn') {
-    imgPiece.setAttribute("src", "./images/Chess_plt60.png");
-  }
-
+  var pieceToImg = piecesInPosition[i];
+  var FINALLY = piecesImg[pieceToImg];
+  imgPiece.setAttribute("src", FINALLY);
   document.getElementById(piecesPosition[i]).appendChild(imgPiece);
 } //Old Code:
 // const divRow = () => {
@@ -186,3 +179,8 @@ for (i = 0; i < piecesPosition.length; i++) {
 //   blackBox.classList.add("black");
 //   row.appendChild(blackBox);
 // }
+// const white_pawn = document.createElement("img");
+// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
+// document.getElementById('a2').appendChild(white_pawn);
+//const piecesTypes= Object.keys(piecesImg);
+//const piecesImages =  Object.values(piecesImg);

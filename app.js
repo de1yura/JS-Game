@@ -114,7 +114,7 @@ const piecesImg = {
   'b_king' : "./images/Chess_kdt60.png"
 }
 
-const piecesPos = {
+const piecesStartPos = {
   'a2': 'w_pawn',
   'b2': 'w_pawn',
   'c2': 'w_pawn',
@@ -150,27 +150,18 @@ const piecesPos = {
   'h8':'b_rook'
 }
 
-
-
-// const white_pawn = document.createElement("img");
-// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-// document.getElementById('a2').appendChild(white_pawn);
-
-
-const piecesTypes= Object.keys(piecesImg);
-const piecesImages =  Object.values(piecesImg);
-const piecesPosition = Object.keys(piecesPos);
-const piecesInPosition = Object.values(piecesPos);
+const piecesPosition = Object.keys(piecesStartPos);
+const piecesInPosition = Object.values(piecesStartPos);
 
 
 for(i=0;i<piecesPosition.length; i++){
   const imgPiece = document.createElement('img');
-  if (piecesInPosition[i]==='w_pawn') {
-    imgPiece.setAttribute("src", "./images/Chess_plt60.png");
-  }
-
+  const pieceToImg = piecesInPosition[i];
+  const FINALLY = piecesImg[pieceToImg];
+  imgPiece.setAttribute("src", FINALLY);
   document.getElementById(piecesPosition[i]).appendChild(imgPiece)
 }
+
 
 
 
@@ -198,3 +189,13 @@ for(i=0;i<piecesPosition.length; i++){
 //   blackBox.classList.add("black");
 //   row.appendChild(blackBox);
 // }
+
+
+
+// const white_pawn = document.createElement("img");
+// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
+// document.getElementById('a2').appendChild(white_pawn);
+
+
+//const piecesTypes= Object.keys(piecesImg);
+//const piecesImages =  Object.values(piecesImg);
