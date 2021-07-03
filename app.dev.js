@@ -8,6 +8,7 @@ var numbers = document.querySelector('.numbers'); //creating div elements inside
 for (var y = 0; y < 8; y++) {
   var row = document.createElement("div");
   row.classList.add("row");
+  row.classList.add("row".concat(8 - y));
 
   if (y % 2 === 0) {
     row.style.flexDirection = 'row-reverse';
@@ -42,7 +43,8 @@ number.forEach(function (sideNum) {
   var sideNumbers = document.createElement("li");
   sideNumbers.textContent = sideNum;
   numbers.appendChild(sideNumbers);
-}); //adding id to each box
+}); //adding id to each box from a1...h8
+//making array of all a1-h8
 
 var boxValues = [];
 
@@ -51,13 +53,53 @@ for (i = 1; i <= 8; i++) {
     return alpha + i;
   });
   boxValues.push(alphaNum);
-} //console.log(boxValues);
+}
 
+var array2 = boxValues[1].reverse();
+var array4 = boxValues[3].reverse();
+var array6 = boxValues[5].reverse();
+var array8 = boxValues[7].reverse();
+console.log(array2);
+var row1squares = document.querySelectorAll('.row1 .box');
+var row2squares = document.querySelectorAll('.row2 .box');
+var row3squares = document.querySelectorAll('.row3 .box');
+var row4squares = document.querySelectorAll('.row4 .box');
+var row5squares = document.querySelectorAll('.row5 .box');
+var row6squares = document.querySelectorAll('.row6 .box');
+var row7squares = document.querySelectorAll('.row7 .box');
+var row8squares = document.querySelectorAll('.row8 .box');
 
-boxValues.map(function (boxValue) {
-  array = boxValue;
-});
-console.log(array); //Old Code:
+for (i = 0; i < 8; i++) {
+  row1squares[i].setAttribute('id', "".concat(boxValues[0][i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row2squares[i].setAttribute('id', "".concat(array2[i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row3squares[i].setAttribute('id', "".concat(boxValues[2][i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row4squares[i].setAttribute('id', "".concat(array4[i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row5squares[i].setAttribute('id', "".concat(boxValues[4][i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row6squares[i].setAttribute('id', "".concat(array6[i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row7squares[i].setAttribute('id', "".concat(boxValues[6][i]));
+}
+
+for (i = 0; i < 8; i++) {
+  row8squares[i].setAttribute('id', "".concat(array8[i]));
+} //Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);
