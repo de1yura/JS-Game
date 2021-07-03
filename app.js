@@ -53,14 +53,13 @@ alphaNum = alphabet.map((alpha) => alpha+i);
 boxValues.push(alphaNum);
 }
 
+//inversing the array for the rows that are flex-row-reversed
 const array2 = boxValues[1].reverse();
 const array4 = boxValues[3].reverse();
 const array6 = boxValues[5].reverse();
 const array8 = boxValues[7].reverse();
-console.log(array2);
 
-
-
+//assigning the squares their id
 const row1squares = document.querySelectorAll('.row1 .box');
 const row2squares = document.querySelectorAll('.row2 .box');
 const row3squares = document.querySelectorAll('.row3 .box');
@@ -95,7 +94,11 @@ for(i=0;i<8;i++){
   row8squares[i].setAttribute('id',`${array8[i]}`)
 }
 
+//importing the pieces into the board
 
+const white_pawn = document.createElement("img");
+white_pawn.setAttribute("src", "./images/Chess_plt60.png");
+document.getElementById('a1').appendChild(white_pawn);
 
 
 

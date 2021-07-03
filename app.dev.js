@@ -53,13 +53,14 @@ for (i = 1; i <= 8; i++) {
     return alpha + i;
   });
   boxValues.push(alphaNum);
-}
+} //inversing the array for the rows that are flex-row-reversed
+
 
 var array2 = boxValues[1].reverse();
 var array4 = boxValues[3].reverse();
 var array6 = boxValues[5].reverse();
-var array8 = boxValues[7].reverse();
-console.log(array2);
+var array8 = boxValues[7].reverse(); //assigning the squares their id
+
 var row1squares = document.querySelectorAll('.row1 .box');
 var row2squares = document.querySelectorAll('.row2 .box');
 var row3squares = document.querySelectorAll('.row3 .box');
@@ -99,7 +100,12 @@ for (i = 0; i < 8; i++) {
 
 for (i = 0; i < 8; i++) {
   row8squares[i].setAttribute('id', "".concat(array8[i]));
-} //Old Code:
+} //importing the pieces into the board
+
+
+var white_pawn = document.createElement("img");
+white_pawn.setAttribute("src", "./images/Chess_plt60.png");
+document.getElementById('a1').appendChild(white_pawn); //Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);
