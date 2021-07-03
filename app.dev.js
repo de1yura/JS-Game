@@ -152,14 +152,24 @@ var piecesPos = {
   'f8': 'b_bishop',
   'g8': 'b_knight',
   'h8': 'b_rook'
-};
-var white_pawn = document.createElement("img");
-white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-document.getElementById('a2').appendChild(white_pawn);
-var pieceTypes_duplicates = Object.values(piecesPos);
-var pieceTypes = pieceTypes_duplicates.filter(function (pieces, index) {
-  return pieceTypes_duplicates.indexOf(pieces) === index;
-}); //Old Code:
+}; // const white_pawn = document.createElement("img");
+// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
+// document.getElementById('a2').appendChild(white_pawn);
+
+var piecesTypes = Object.keys(piecesImg);
+var piecesImages = Object.values(piecesImg);
+var piecesPosition = Object.keys(piecesPos);
+var piecesInPosition = Object.values(piecesPos);
+
+for (i = 0; i < piecesPosition.length; i++) {
+  var imgPiece = document.createElement('img');
+
+  if (piecesInPosition[i] === 'w_pawn') {
+    imgPiece.setAttribute("src", "./images/Chess_plt60.png");
+  }
+
+  document.getElementById(piecesPosition[i]).appendChild(imgPiece);
+} //Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);

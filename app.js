@@ -150,13 +150,27 @@ const piecesPos = {
   'h8':'b_rook'
 }
 
-const white_pawn = document.createElement("img");
-white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-document.getElementById('a2').appendChild(white_pawn);
 
 
-const pieceTypes_duplicates= Object.values(piecesPos);
-const pieceTypes = pieceTypes_duplicates.filter((pieces, index) => pieceTypes_duplicates.indexOf(pieces) ===index);
+// const white_pawn = document.createElement("img");
+// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
+// document.getElementById('a2').appendChild(white_pawn);
+
+
+const piecesTypes= Object.keys(piecesImg);
+const piecesImages =  Object.values(piecesImg);
+const piecesPosition = Object.keys(piecesPos);
+const piecesInPosition = Object.values(piecesPos);
+
+
+for(i=0;i<piecesPosition.length; i++){
+  const imgPiece = document.createElement('img');
+  if (piecesInPosition[i]==='w_pawn') {
+    imgPiece.setAttribute("src", "./images/Chess_plt60.png");
+  }
+
+  document.getElementById(piecesPosition[i]).appendChild(imgPiece)
+}
 
 
 
