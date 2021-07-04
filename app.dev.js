@@ -158,10 +158,18 @@ var piecesInPosition = Object.values(piecesStartPos);
 
 for (i = 0; i < piecesPosition.length; i++) {
   var imgPiece = document.createElement('img');
-  var pieceToImg = piecesInPosition[i];
-  var FINALLY = piecesImg[pieceToImg];
-  imgPiece.setAttribute("src", FINALLY);
+  var pieceToImg = piecesImg[piecesInPosition[i]];
+  imgPiece.setAttribute("src", pieceToImg);
   document.getElementById(piecesPosition[i]).appendChild(imgPiece);
+} //move pieces on click
+
+
+var square = document.querySelectorAll('.box');
+
+for (i = 0; i < square.length; i++) {
+  square[i].addEventListener('click', function () {
+    console.log('hi');
+  });
 } //Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");

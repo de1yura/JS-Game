@@ -33,8 +33,8 @@ for(let y=0; y<8; y++){
 
 
 //array of numbers and letters for the board
-let alphabet = ['a','b','c','d','e','f','g','h'];
-let number = [1,2,3,4,5,6,7,8];
+const alphabet = ['a','b','c','d','e','f','g','h'];
+const number = [1,2,3,4,5,6,7,8];
 
 alphabet.forEach((alpha) => {
   let letter = document.createElement("li");
@@ -55,6 +55,7 @@ for(i=1; i<=8; i++){
 alphaNum = alphabet.map((alpha) => alpha+i);
 boxValues.push(alphaNum);
 }
+
 
 //inversing the array for the rows that are flex-row-reversed
 const array2 = boxValues[1].reverse();
@@ -123,14 +124,14 @@ const piecesStartPos = {
   'f2': 'w_pawn',
   'g2': 'w_pawn',
   'h2': 'w_pawn',
-  'a1':'w_rook',  
-  'b1':'w_knight', 
-  'c1':'w_bishop', 
-  'd1':'w_queen',
-  'e1':'w_king', 
-  'f1':'w_bishop',
-  'g1':'w_knight', 
-  'h1':'w_rook', 
+  'a1': 'w_rook',  
+  'b1': 'w_knight', 
+  'c1': 'w_bishop', 
+  'd1': 'w_queen',
+  'e1': 'w_king', 
+  'f1': 'w_bishop',
+  'g1': 'w_knight', 
+  'h1': 'w_rook', 
 
   'a7': 'b_pawn',
   'b7': 'b_pawn',
@@ -140,14 +141,14 @@ const piecesStartPos = {
   'f7': 'b_pawn',
   'g7': 'b_pawn',
   'h7': 'b_pawn',
-  'a8':'b_rook',  
-  'b8':'b_knight', 
-  'c8':'b_bishop', 
-  'd8':'b_queen',
-  'e8':'b_king', 
-  'f8':'b_bishop',
-  'g8':'b_knight', 
-  'h8':'b_rook'
+  'a8': 'b_rook',  
+  'b8': 'b_knight', 
+  'c8': 'b_bishop', 
+  'd8': 'b_queen',
+  'e8': 'b_king', 
+  'f8': 'b_bishop',
+  'g8': 'b_knight', 
+  'h8': 'b_rook'
 }
 
 const piecesPosition = Object.keys(piecesStartPos);
@@ -156,11 +157,20 @@ const piecesInPosition = Object.values(piecesStartPos);
 
 for(i=0;i<piecesPosition.length; i++){
   const imgPiece = document.createElement('img');
-  const pieceToImg = piecesInPosition[i];
-  const FINALLY = piecesImg[pieceToImg];
-  imgPiece.setAttribute("src", FINALLY);
+  const pieceToImg = piecesImg[piecesInPosition[i]];
+  imgPiece.setAttribute("src", pieceToImg);
   document.getElementById(piecesPosition[i]).appendChild(imgPiece)
 }
+
+//move pieces on click
+const square = document.querySelectorAll('.box');
+for(i=0;i<square.length;i++){
+  square[i].addEventListener('click', () => {
+    console.log('hi')
+  })
+}
+
+
 
 
 
