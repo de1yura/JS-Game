@@ -165,12 +165,27 @@ for (i = 0; i < piecesPosition.length; i++) {
 
 
 var square = document.querySelectorAll('.box');
+var first_click = "";
+
+var firstClick = function firstClick(e) {
+  first_click = e.target;
+  console.log(first_click);
+};
 
 for (i = 0; i < square.length; i++) {
-  square[i].addEventListener('click', function () {
-    console.log('hi');
-  });
-} //Old Code:
+  square[i].addEventListener('click', firstClick);
+} // for(i=0;i<square.length;i++){
+//   square[i].addEventListener('click', (e) => {
+//     first_click = e.target;
+//     console.log(first_click);
+//   })
+// }
+// for(i=0;i<square.length;i++){
+//   square[i].addEventListener('click', ()=>{
+//     console.log(square[1].innerHTML);
+//   })
+// }
+//Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);

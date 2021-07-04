@@ -164,11 +164,32 @@ for(i=0;i<piecesPosition.length; i++){
 
 //move pieces on click
 const square = document.querySelectorAll('.box');
+
+let first_click = "";
+
+ const firstClick = (e) => {
+   first_click = e.target;
+   console.log(first_click);
+ }
+
+
 for(i=0;i<square.length;i++){
-  square[i].addEventListener('click', () => {
-    console.log('hi')
-  })
+  square[i].addEventListener('click', firstClick)
 }
+
+// for(i=0;i<square.length;i++){
+//   square[i].addEventListener('click', (e) => {
+//     first_click = e.target;
+//     console.log(first_click);
+//   })
+// }
+
+
+// for(i=0;i<square.length;i++){
+//   square[i].addEventListener('click', ()=>{
+//     console.log(square[1].innerHTML);
+//   })
+// }
 
 
 
