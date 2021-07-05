@@ -1,5 +1,4 @@
-//import { piecesImg } from "./pieces"
-//import { piecesPos } from "./pieces";
+import { piecesImg, piecesStartPos } from "./pieces.js";
 
 const game = document.getElementById('game');
 const board = document.querySelector('.chess');
@@ -51,8 +50,8 @@ number.forEach((sideNum) => {
 //adding id to each box from a1...h8
 //making array of all a1-h8
 let boxValues=[];
-for(i=1; i<=8; i++){
-alphaNum = alphabet.map((alpha) => alpha+i);
+for(let i=1; i<=8; i++){
+let alphaNum = alphabet.map((alpha) => alpha+i);
 boxValues.push(alphaNum);
 }
 
@@ -73,89 +72,36 @@ const row6squares = document.querySelectorAll('.row6 .box');
 const row7squares = document.querySelectorAll('.row7 .box');
 const row8squares = document.querySelectorAll('.row8 .box');
 
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row1squares[i].setAttribute('id',`${boxValues[0][i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row2squares[i].setAttribute('id',`${array2[i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row3squares[i].setAttribute('id',`${boxValues[2][i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row4squares[i].setAttribute('id',`${array4[i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row5squares[i].setAttribute('id',`${boxValues[4][i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row6squares[i].setAttribute('id',`${array6[i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row7squares[i].setAttribute('id',`${boxValues[6][i]}`)
 }
-for(i=0;i<8;i++){
+for(let i=0;i<8;i++){
   row8squares[i].setAttribute('id',`${array8[i]}`)
-}
-
-//importing the pieces into the board
-const piecesImg = {
-  'w_pawn' : "./images/Chess_plt60.png",
-  'w_rook' : "./images/Chess_rlt60.png",
-  'w_knight' : "./images/Chess_nlt60.png",
-  'w_bishop' : "./images/Chess_blt60.png",
-  'w_queen' : "./images/Chess_qlt60.png",
-  'w_king' : "./images/Chess_klt60.png",
-
-  'b_pawn' : "./images/Chess_pdt60.png",
-  'b_rook' : "./images/Chess_rdt60.png",
-  'b_knight' : "./images/Chess_ndt60.png",
-  'b_bishop' : "./images/Chess_bdt60.png",
-  'b_queen' : "./images/Chess_qdt60.png",
-  'b_king' : "./images/Chess_kdt60.png"
-}
-
-const piecesStartPos = {
-  'a2': 'w_pawn',
-  'b2': 'w_pawn',
-  'c2': 'w_pawn',
-  'd2': 'w_pawn',
-  'e2': 'w_pawn',
-  'f2': 'w_pawn',
-  'g2': 'w_pawn',
-  'h2': 'w_pawn',
-  'a1': 'w_rook',  
-  'b1': 'w_knight', 
-  'c1': 'w_bishop', 
-  'd1': 'w_queen',
-  'e1': 'w_king', 
-  'f1': 'w_bishop',
-  'g1': 'w_knight', 
-  'h1': 'w_rook', 
-
-  'a7': 'b_pawn',
-  'b7': 'b_pawn',
-  'c7': 'b_pawn',
-  'd7': 'b_pawn',
-  'e7': 'b_pawn',
-  'f7': 'b_pawn',
-  'g7': 'b_pawn',
-  'h7': 'b_pawn',
-  'a8': 'b_rook',  
-  'b8': 'b_knight', 
-  'c8': 'b_bishop', 
-  'd8': 'b_queen',
-  'e8': 'b_king', 
-  'f8': 'b_bishop',
-  'g8': 'b_knight', 
-  'h8': 'b_rook'
 }
 
 const piecesPosition = Object.keys(piecesStartPos);
 const piecesInPosition = Object.values(piecesStartPos);
 
 
-for(i=0;i<piecesPosition.length; i++){
+for(let i=0;i<piecesPosition.length; i++){
   const imgPiece = document.createElement('img');
   const pieceToImg = piecesImg[piecesInPosition[i]];
   imgPiece.setAttribute("src", pieceToImg);
@@ -169,28 +115,35 @@ const square = document.querySelectorAll('.box');
 let first_click = "";
 let hasClicked =false;
 
-const secondClick = (e) => {
-  if (first_click !="" && hasClicked) {
-    e.target.style.backgroundImage=first_click;
-    console.log(e.target.style)
-  }
-}
-square.forEach(sq => {
-  sq.addEventListener('click', secondClick)
-})
 
-
-
- const firstClick = (e) => {
-   if (first_click==="") {
-      first_click = e.target.style.backgroundImage;
+ const firstClick = (event) => {
+      first_click = event.target.style.backgroundImage;
       hasClicked=true
-      console.log(first_click); 
-   }
+      console.log('first click'); 
+}
+
+const secondClick = (e) => {
+  e.target.style.backgroundImage=first_click;
+  first_click="";
+  hasClicked=false;
+  console.log('second click')
  }
+
  square.forEach(sq => {
-   sq.addEventListener('click', firstClick)
- })
+    sq.addEventListener("click", (event) => {
+      if (hasClicked) {
+        secondClick(event)
+      } else {
+        firstClick(event)
+      }
+    })})
+ 
+
+
+
+// square.forEach(sq => { 
+//  sq.addEventListener('click', secondClick)
+// })
 
 
 

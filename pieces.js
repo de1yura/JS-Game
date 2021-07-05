@@ -14,7 +14,7 @@ export const piecesImg = {
   'b_king' : "./images/Chess_kdt60.png"
 }
 
-export const piecesPos = {
+export const piecesStartPos = {
   'a2': 'w_pawn',
   'b2': 'w_pawn',
   'c2': 'w_pawn',
@@ -40,12 +40,12 @@ export const piecesPos = {
   'f7': 'b_pawn',
   'g7': 'b_pawn',
   'h7': 'b_pawn',
-  'a8':'w_rook',  
-  'b8':'w_knight', 
-  'c8':'w_bishop', 
-  'd8':'w_queen',
-  'e8':'w_king', 
-  'f8':'w_bishop',
-  'g8':'w_knight', 
-  'h8':'w_rook'
+  'a8':'b_rook',  
+  'b8':'b_knight', 
+  'c8':'b_bishop', 
+  'd8':'b_queen',
+  'e8':'b_king', 
+  'f8':'b_bishop',
+  'g8':'b_knight', 
+  'h8':'b_rook'
 }

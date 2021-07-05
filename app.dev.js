@@ -1,7 +1,7 @@
 "use strict";
 
-//import { piecesImg } from "./pieces"
-//import { piecesPos } from "./pieces";
+var _pieces = require("./pieces.js");
+
 var game = document.getElementById('game');
 var board = document.querySelector('.chess');
 var letters = document.querySelector('.letters');
@@ -50,11 +50,15 @@ number.forEach(function (sideNum) {
 
 var boxValues = [];
 
-for (i = 1; i <= 8; i++) {
-  alphaNum = alphabet.map(function (alpha) {
+var _loop = function _loop(i) {
+  var alphaNum = alphabet.map(function (alpha) {
     return alpha + i;
   });
   boxValues.push(alphaNum);
+};
+
+for (var i = 1; i <= 8; i++) {
+  _loop(i);
 } //inversing the array for the rows that are flex-row-reversed
 
 
@@ -72,95 +76,46 @@ var row6squares = document.querySelectorAll('.row6 .box');
 var row7squares = document.querySelectorAll('.row7 .box');
 var row8squares = document.querySelectorAll('.row8 .box');
 
-for (i = 0; i < 8; i++) {
-  row1squares[i].setAttribute('id', "".concat(boxValues[0][i]));
+for (var _i = 0; _i < 8; _i++) {
+  row1squares[_i].setAttribute('id', "".concat(boxValues[0][_i]));
 }
 
-for (i = 0; i < 8; i++) {
-  row2squares[i].setAttribute('id', "".concat(array2[i]));
+for (var _i2 = 0; _i2 < 8; _i2++) {
+  row2squares[_i2].setAttribute('id', "".concat(array2[_i2]));
 }
 
-for (i = 0; i < 8; i++) {
-  row3squares[i].setAttribute('id', "".concat(boxValues[2][i]));
+for (var _i3 = 0; _i3 < 8; _i3++) {
+  row3squares[_i3].setAttribute('id', "".concat(boxValues[2][_i3]));
 }
 
-for (i = 0; i < 8; i++) {
-  row4squares[i].setAttribute('id', "".concat(array4[i]));
+for (var _i4 = 0; _i4 < 8; _i4++) {
+  row4squares[_i4].setAttribute('id', "".concat(array4[_i4]));
 }
 
-for (i = 0; i < 8; i++) {
-  row5squares[i].setAttribute('id', "".concat(boxValues[4][i]));
+for (var _i5 = 0; _i5 < 8; _i5++) {
+  row5squares[_i5].setAttribute('id', "".concat(boxValues[4][_i5]));
 }
 
-for (i = 0; i < 8; i++) {
-  row6squares[i].setAttribute('id', "".concat(array6[i]));
+for (var _i6 = 0; _i6 < 8; _i6++) {
+  row6squares[_i6].setAttribute('id', "".concat(array6[_i6]));
 }
 
-for (i = 0; i < 8; i++) {
-  row7squares[i].setAttribute('id', "".concat(boxValues[6][i]));
+for (var _i7 = 0; _i7 < 8; _i7++) {
+  row7squares[_i7].setAttribute('id', "".concat(boxValues[6][_i7]));
 }
 
-for (i = 0; i < 8; i++) {
-  row8squares[i].setAttribute('id', "".concat(array8[i]));
-} //importing the pieces into the board
+for (var _i8 = 0; _i8 < 8; _i8++) {
+  row8squares[_i8].setAttribute('id', "".concat(array8[_i8]));
+}
 
+var piecesPosition = Object.keys(_pieces.piecesStartPos);
+var piecesInPosition = Object.values(_pieces.piecesStartPos);
 
-var piecesImg = {
-  'w_pawn': "./images/Chess_plt60.png",
-  'w_rook': "./images/Chess_rlt60.png",
-  'w_knight': "./images/Chess_nlt60.png",
-  'w_bishop': "./images/Chess_blt60.png",
-  'w_queen': "./images/Chess_qlt60.png",
-  'w_king': "./images/Chess_klt60.png",
-  'b_pawn': "./images/Chess_pdt60.png",
-  'b_rook': "./images/Chess_rdt60.png",
-  'b_knight': "./images/Chess_ndt60.png",
-  'b_bishop': "./images/Chess_bdt60.png",
-  'b_queen': "./images/Chess_qdt60.png",
-  'b_king': "./images/Chess_kdt60.png"
-};
-var piecesStartPos = {
-  'a2': 'w_pawn',
-  'b2': 'w_pawn',
-  'c2': 'w_pawn',
-  'd2': 'w_pawn',
-  'e2': 'w_pawn',
-  'f2': 'w_pawn',
-  'g2': 'w_pawn',
-  'h2': 'w_pawn',
-  'a1': 'w_rook',
-  'b1': 'w_knight',
-  'c1': 'w_bishop',
-  'd1': 'w_queen',
-  'e1': 'w_king',
-  'f1': 'w_bishop',
-  'g1': 'w_knight',
-  'h1': 'w_rook',
-  'a7': 'b_pawn',
-  'b7': 'b_pawn',
-  'c7': 'b_pawn',
-  'd7': 'b_pawn',
-  'e7': 'b_pawn',
-  'f7': 'b_pawn',
-  'g7': 'b_pawn',
-  'h7': 'b_pawn',
-  'a8': 'b_rook',
-  'b8': 'b_knight',
-  'c8': 'b_bishop',
-  'd8': 'b_queen',
-  'e8': 'b_king',
-  'f8': 'b_bishop',
-  'g8': 'b_knight',
-  'h8': 'b_rook'
-};
-var piecesPosition = Object.keys(piecesStartPos);
-var piecesInPosition = Object.values(piecesStartPos);
-
-for (i = 0; i < piecesPosition.length; i++) {
+for (var _i9 = 0; _i9 < piecesPosition.length; _i9++) {
   var imgPiece = document.createElement('img');
-  var pieceToImg = piecesImg[piecesInPosition[i]];
+  var pieceToImg = _pieces.piecesImg[piecesInPosition[_i9]];
   imgPiece.setAttribute("src", pieceToImg);
-  document.getElementById(piecesPosition[i]).style.backgroundImage = "url('".concat(pieceToImg, "')");
+  document.getElementById(piecesPosition[_i9]).style.backgroundImage = "url('".concat(pieceToImg, "')");
 } //move pieces on click
 //get id of square clicked
 
@@ -169,28 +124,31 @@ var square = document.querySelectorAll('.box');
 var first_click = "";
 var hasClicked = false;
 
+var firstClick = function firstClick(event) {
+  first_click = event.target.style.backgroundImage;
+  hasClicked = true;
+  console.log('first click');
+};
+
 var secondClick = function secondClick(e) {
-  if (first_click != "" && hasClicked) {
-    e.target.style.backgroundImage = first_click;
-    console.log(e.target.style);
-  }
+  e.target.style.backgroundImage = first_click;
+  first_click = "";
+  hasClicked = false;
+  console.log('second click');
 };
 
 square.forEach(function (sq) {
-  sq.addEventListener('click', secondClick);
-});
-
-var firstClick = function firstClick(e) {
-  if (first_click === "") {
-    first_click = e.target.style.backgroundImage;
-    hasClicked = true;
-    console.log(first_click);
-  }
-};
-
-square.forEach(function (sq) {
-  sq.addEventListener('click', firstClick);
-}); //Old Code:
+  sq.addEventListener("click", function (event) {
+    if (hasClicked) {
+      secondClick(event);
+    } else {
+      firstClick(event);
+    }
+  });
+}); // square.forEach(sq => { 
+//  sq.addEventListener('click', secondClick)
+// })
+//Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);

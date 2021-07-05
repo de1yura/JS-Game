@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.piecesPos = exports.piecesImg = void 0;
+exports.piecesStartPos = exports.piecesImg = void 0;
 var piecesImg = {
   'w_pawn': "./images/Chess_plt60.png",
   'w_rook': "./images/Chess_rlt60.png",
@@ -19,7 +19,7 @@ var piecesImg = {
   'b_king': "./images/Chess_kdt60.png"
 };
 exports.piecesImg = piecesImg;
-var piecesPos = {
+var piecesStartPos = {
   'a2': 'w_pawn',
   'b2': 'w_pawn',
   'c2': 'w_pawn',
@@ -44,13 +44,13 @@ var piecesPos = {
   'f7': 'b_pawn',
   'g7': 'b_pawn',
   'h7': 'b_pawn',
-  'a8': 'w_rook',
-  'b8': 'w_knight',
-  'c8': 'w_bishop',
-  'd8': 'w_queen',
-  'e8': 'w_king',
-  'f8': 'w_bishop',
-  'g8': 'w_knight',
-  'h8': 'w_rook'
+  'a8': 'b_rook',
+  'b8': 'b_knight',
+  'c8': 'b_bishop',
+  'd8': 'b_queen',
+  'e8': 'b_king',
+  'f8': 'b_bishop',
+  'g8': 'b_knight',
+  'h8': 'b_rook'
 };
-exports.piecesPos = piecesPos;
+exports.piecesStartPos = piecesStartPos;
