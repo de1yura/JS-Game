@@ -160,32 +160,37 @@ for (i = 0; i < piecesPosition.length; i++) {
   var imgPiece = document.createElement('img');
   var pieceToImg = piecesImg[piecesInPosition[i]];
   imgPiece.setAttribute("src", pieceToImg);
-  document.getElementById(piecesPosition[i]).appendChild(imgPiece);
+  document.getElementById(piecesPosition[i]).style.backgroundImage = "url('".concat(pieceToImg, "')");
 } //move pieces on click
+//get id of square clicked
 
 
 var square = document.querySelectorAll('.box');
 var first_click = "";
+var hasClicked = false;
 
-var firstClick = function firstClick(e) {
-  first_click = e.target;
-  console.log(first_click);
+var secondClick = function secondClick(e) {
+  if (first_click != "" && hasClicked) {
+    e.target.style.backgroundImage = first_click;
+    console.log(e.target.style);
+  }
 };
 
-for (i = 0; i < square.length; i++) {
-  square[i].addEventListener('click', firstClick);
-} // for(i=0;i<square.length;i++){
-//   square[i].addEventListener('click', (e) => {
-//     first_click = e.target;
-//     console.log(first_click);
-//   })
-// }
-// for(i=0;i<square.length;i++){
-//   square[i].addEventListener('click', ()=>{
-//     console.log(square[1].innerHTML);
-//   })
-// }
-//Old Code:
+square.forEach(function (sq) {
+  sq.addEventListener('click', secondClick);
+});
+
+var firstClick = function firstClick(e) {
+  if (first_click === "") {
+    first_click = e.target.style.backgroundImage;
+    hasClicked = true;
+    console.log(first_click);
+  }
+};
+
+square.forEach(function (sq) {
+  sq.addEventListener('click', firstClick);
+}); //Old Code:
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);

@@ -159,45 +159,38 @@ for(i=0;i<piecesPosition.length; i++){
   const imgPiece = document.createElement('img');
   const pieceToImg = piecesImg[piecesInPosition[i]];
   imgPiece.setAttribute("src", pieceToImg);
-  document.getElementById(piecesPosition[i]).appendChild(imgPiece)
+  document.getElementById(piecesPosition[i]).style.backgroundImage= `url('${pieceToImg}')`
 }
 
 //move pieces on click
+//get id of square clicked
 const square = document.querySelectorAll('.box');
 
 let first_click = "";
+let hasClicked =false;
+
+const secondClick = (e) => {
+  if (first_click !="" && hasClicked) {
+    e.target.style.backgroundImage=first_click;
+    console.log(e.target.style)
+  }
+}
+square.forEach(sq => {
+  sq.addEventListener('click', secondClick)
+})
+
+
 
  const firstClick = (e) => {
-   first_click = e.target;
-   console.log(first_click);
+   if (first_click==="") {
+      first_click = e.target.style.backgroundImage;
+      hasClicked=true
+      console.log(first_click); 
+   }
  }
-
-
-for(i=0;i<square.length;i++){
-  square[i].addEventListener('click', firstClick)
-}
-
-// for(i=0;i<square.length;i++){
-//   square[i].addEventListener('click', (e) => {
-//     first_click = e.target;
-//     console.log(first_click);
-//   })
-// }
-
-
-// for(i=0;i<square.length;i++){
-//   square[i].addEventListener('click', ()=>{
-//     console.log(square[1].innerHTML);
-//   })
-// }
-
-
-
-
-
-
-
-
+ square.forEach(sq => {
+   sq.addEventListener('click', firstClick)
+ })
 
 
 
