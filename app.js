@@ -1,7 +1,6 @@
 import { piecesImg, piecesStartPos } from "./pieces.js";
 
 const game = document.getElementById('game');
-const board = document.querySelector('.chess');
 const letters = document.querySelector('.letters');
 const numbers = document.querySelector('.numbers');
 
@@ -101,12 +100,15 @@ const piecesPosition = Object.keys(piecesStartPos);
 const piecesInPosition = Object.values(piecesStartPos);
 
 
-for(let i=0;i<piecesPosition.length; i++){
-  const imgPiece = document.createElement('img');
-  const pieceToImg = piecesImg[piecesInPosition[i]];
-  imgPiece.setAttribute("src", pieceToImg);
-  document.getElementById(piecesPosition[i]).style.backgroundImage= `url('${pieceToImg}')`
+const setup =()=> {
+  for(let i=0;i<piecesPosition.length; i++){
+    const imgPiece = document.createElement('img');
+    const pieceToImg = piecesImg[piecesInPosition[i]];
+    imgPiece.setAttribute("src", pieceToImg);
+    document.getElementById(piecesPosition[i]).style.backgroundImage= `url('${pieceToImg}')`
+  }
 }
+setup()
 
 //move pieces on click
 //get id of square clicked
@@ -116,18 +118,25 @@ let first_click = "";
 let hasClicked =false;
 
 
- const firstClick = (event) => {
-      first_click = event.target.style.backgroundImage;
-      hasClicked=true
-      console.log('first click'); 
+const firstClick = (event) => {
+  first_click = event.target.style.backgroundImage;
+  hasClicked=true
+  console.log('first click'); 
+  clearPiece(event)
 }
 
-const secondClick = (e) => {
-  e.target.style.backgroundImage=first_click;
+const secondClick = (event) => {
+  event.target.style.backgroundImage=first_click;
   first_click="";
   hasClicked=false;
   console.log('second click')
  }
+
+const clearPiece = (event) => {
+  if (secondClick) {
+    event.target.style.backgroundImage =""
+  }
+}
 
  square.forEach(sq => {
     sq.addEventListener("click", (event) => {
@@ -136,20 +145,26 @@ const secondClick = (e) => {
       } else {
         firstClick(event)
       }
-    })})
+    })
+  })
+ 
+//restart board
+ const button = document.querySelector('.restart');
+
+ button.addEventListener('click', setup);
+
+
+
+
+
+
+
+
  
 
-
-
-// square.forEach(sq => { 
-//  sq.addEventListener('click', secondClick)
-// })
-
-
-
-
-
 //Old Code:
+//const board = document.querySelector('.chess');
+
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);

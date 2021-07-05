@@ -3,7 +3,6 @@
 var _pieces = require("./pieces.js");
 
 var game = document.getElementById('game');
-var board = document.querySelector('.chess');
 var letters = document.querySelector('.letters');
 var numbers = document.querySelector('.numbers'); //creating div elements inside html for the chess board pattern
 
@@ -111,14 +110,17 @@ for (var _i8 = 0; _i8 < 8; _i8++) {
 var piecesPosition = Object.keys(_pieces.piecesStartPos);
 var piecesInPosition = Object.values(_pieces.piecesStartPos);
 
-for (var _i9 = 0; _i9 < piecesPosition.length; _i9++) {
-  var imgPiece = document.createElement('img');
-  var pieceToImg = _pieces.piecesImg[piecesInPosition[_i9]];
-  imgPiece.setAttribute("src", pieceToImg);
-  document.getElementById(piecesPosition[_i9]).style.backgroundImage = "url('".concat(pieceToImg, "')");
-} //move pieces on click
-//get id of square clicked
+var setup = function setup() {
+  for (var _i9 = 0; _i9 < piecesPosition.length; _i9++) {
+    var imgPiece = document.createElement('img');
+    var pieceToImg = _pieces.piecesImg[piecesInPosition[_i9]];
+    imgPiece.setAttribute("src", pieceToImg);
+    document.getElementById(piecesPosition[_i9]).style.backgroundImage = "url('".concat(pieceToImg, "')");
+  }
+};
 
+setup(); //move pieces on click
+//get id of square clicked
 
 var square = document.querySelectorAll('.box');
 var first_click = "";
@@ -128,13 +130,20 @@ var firstClick = function firstClick(event) {
   first_click = event.target.style.backgroundImage;
   hasClicked = true;
   console.log('first click');
+  clearPiece(event);
 };
 
-var secondClick = function secondClick(e) {
-  e.target.style.backgroundImage = first_click;
+var secondClick = function secondClick(event) {
+  event.target.style.backgroundImage = first_click;
   first_click = "";
   hasClicked = false;
   console.log('second click');
+};
+
+var clearPiece = function clearPiece(event) {
+  if (secondClick) {
+    event.target.style.backgroundImage = "";
+  }
 };
 
 square.forEach(function (sq) {
@@ -145,10 +154,11 @@ square.forEach(function (sq) {
       firstClick(event);
     }
   });
-}); // square.forEach(sq => { 
-//  sq.addEventListener('click', secondClick)
-// })
-//Old Code:
+}); //restart board
+
+var button = document.querySelector('.restart');
+button.addEventListener('click', setup); //Old Code:
+//const board = document.querySelector('.chess');
 // const divRow = () => {
 //   const divR = document.createElement("div");
 //   game.appendChild(divR);
