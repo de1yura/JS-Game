@@ -3,6 +3,7 @@ import { piecesImg, piecesStartPos } from "./pieces.js";
 const game = document.getElementById('game');
 const letters = document.querySelector('.letters');
 const numbers = document.querySelector('.numbers');
+const button = document.querySelector('.restart');
 
 //creating div elements inside html for the chess board pattern
 for(let y=0; y<8; y++){
@@ -113,10 +114,14 @@ setup()
 //move pieces on click
 //get id of square clicked
 const square = document.querySelectorAll('.box');
-
 let first_click = "";
 let hasClicked =false;
 
+const clearPiece = (event) => {
+  if (secondClick) {
+    event.target.style.backgroundImage =""
+  }
+}
 
 const firstClick = (event) => {
   first_click = event.target.style.backgroundImage;
@@ -132,11 +137,7 @@ const secondClick = (event) => {
   console.log('second click')
  }
 
-const clearPiece = (event) => {
-  if (secondClick) {
-    event.target.style.backgroundImage =""
-  }
-}
+
 
  square.forEach(sq => {
     sq.addEventListener("click", (event) => {
@@ -147,47 +148,13 @@ const clearPiece = (event) => {
       }
     })
   })
- 
+
+  
+ console.log(square);
 //restart board
- const button = document.querySelector('.restart');
 
- button.addEventListener('click', setup);
+const restartBoard =()=> {
+window.location.reload();
+}
 
-
-
-
-
-
-
-
- 
-
-//Old Code:
-//const board = document.querySelector('.chess');
-
-// const divRow = () => {
-//   const divR = document.createElement("div");
-//   game.appendChild(divR);
-//   divR.classList.add("row");
-//   divR.style.flexDirection = i%2===0 ? '':'row-reverse';
-// }
-// const whiteBox = () => {
-//   const whiteBox = document.createElement("div");
-//   whiteBox.classList.add("white");
-//   row.appendChild(whiteBox);
-// }
-// const bBox = () => {
-//   const blackBox = document.createElement("div");
-//   blackBox.classList.add("black");
-//   row.appendChild(blackBox);
-// }
-
-
-
-// const white_pawn = document.createElement("img");
-// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-// document.getElementById('a2').appendChild(white_pawn);
-
-
-//const piecesTypes= Object.keys(piecesImg);
-//const piecesImages =  Object.values(piecesImg);
+ button.addEventListener('click', restartBoard);

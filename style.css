@@ -8,6 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("./images/bckg.jpeg");
 }
 
 .chess {
@@ -52,6 +53,7 @@ body {
 #game .white {
   width: 60px;
   height: 60px;
+  background-color: white;
 }
 #game .black {
   width: 60px;

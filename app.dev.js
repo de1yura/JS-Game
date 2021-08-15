@@ -4,7 +4,8 @@ var _pieces = require("./pieces.js");
 
 var game = document.getElementById('game');
 var letters = document.querySelector('.letters');
-var numbers = document.querySelector('.numbers'); //creating div elements inside html for the chess board pattern
+var numbers = document.querySelector('.numbers');
+var button = document.querySelector('.restart'); //creating div elements inside html for the chess board pattern
 
 for (var y = 0; y < 8; y++) {
   var row = document.createElement("div");
@@ -126,6 +127,12 @@ var square = document.querySelectorAll('.box');
 var first_click = "";
 var hasClicked = false;
 
+var clearPiece = function clearPiece(event) {
+  if (secondClick) {
+    event.target.style.backgroundImage = "";
+  }
+};
+
 var firstClick = function firstClick(event) {
   first_click = event.target.style.backgroundImage;
   hasClicked = true;
@@ -140,12 +147,6 @@ var secondClick = function secondClick(event) {
   console.log('second click');
 };
 
-var clearPiece = function clearPiece(event) {
-  if (secondClick) {
-    event.target.style.backgroundImage = "";
-  }
-};
-
 square.forEach(function (sq) {
   sq.addEventListener("click", function (event) {
     if (hasClicked) {
@@ -154,29 +155,11 @@ square.forEach(function (sq) {
       firstClick(event);
     }
   });
-}); //restart board
+});
+console.log(square); //restart board
 
-var button = document.querySelector('.restart');
-button.addEventListener('click', setup); //Old Code:
-//const board = document.querySelector('.chess');
-// const divRow = () => {
-//   const divR = document.createElement("div");
-//   game.appendChild(divR);
-//   divR.classList.add("row");
-//   divR.style.flexDirection = i%2===0 ? '':'row-reverse';
-// }
-// const whiteBox = () => {
-//   const whiteBox = document.createElement("div");
-//   whiteBox.classList.add("white");
-//   row.appendChild(whiteBox);
-// }
-// const bBox = () => {
-//   const blackBox = document.createElement("div");
-//   blackBox.classList.add("black");
-//   row.appendChild(blackBox);
-// }
-// const white_pawn = document.createElement("img");
-// white_pawn.setAttribute("src", "./images/Chess_plt60.png");
-// document.getElementById('a2').appendChild(white_pawn);
-//const piecesTypes= Object.keys(piecesImg);
-//const piecesImages =  Object.values(piecesImg);
+var restartBoard = function restartBoard() {
+  window.location.reload();
+};
+
+button.addEventListener('click', restartBoard);
